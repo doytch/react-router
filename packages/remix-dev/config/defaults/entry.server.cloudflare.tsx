@@ -1,5 +1,5 @@
 import type { AppLoadContext, EntryContext } from "@react-router/cloudflare";
-import { RemixServer } from "react-router";
+import { ServerRouter } from "react-router";
 import * as isbotModule from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 
@@ -11,7 +11,7 @@ export default async function handleRequest(
   loadContext: AppLoadContext
 ) {
   const body = await renderToReadableStream(
-    <RemixServer context={remixContext} url={request.url} />,
+    <ServerRouter context={remixContext} url={request.url} />,
     {
       signal: request.signal,
       onError(error: unknown) {

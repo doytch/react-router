@@ -1,5 +1,5 @@
 import type { AppLoadContext, EntryContext } from "@react-router/deno";
-import { RemixServer } from "@remix-run/react";
+import { ServerRouter } from "@remix-run/react";
 import * as isbotModule from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 
@@ -11,7 +11,7 @@ export default async function handleRequest(
   loadContext: AppLoadContext
 ) {
   const body = await renderToReadableStream(
-    <RemixServer context={remixContext} url={request.url} />,
+    <ServerRouter context={remixContext} url={request.url} />,
     {
       signal: request.signal,
       onError(error: unknown) {
